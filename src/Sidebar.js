@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 
-
-
 const Sidebar = () => {
+    
+    const [posts, setPosts] = useState([])
 
     const getAllPosts = async () => {
         let res = await fetch('http://localhost/testing/graphql', {
@@ -28,12 +28,11 @@ const Sidebar = () => {
             }),
         })
         let result = await res.json()
-        console.log(result.data.posts.edges)
         setPosts(result.data.posts.edges)
     }
 
     useEffect(() => {
-      
+        getAllPosts()
     }, [])
     
     return (

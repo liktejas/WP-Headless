@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Navbar from './Navbar'
 import Sidebar from './Sidebar';
-import './blogs.css';
+import './blogs.scss';
 
 const Blogs = () => {
 
@@ -56,7 +56,7 @@ const Blogs = () => {
                             posts.map((curr, index) => {
                                 return (
                                     <div key={curr.node.id} className="p-3 bg-white my-3">
-                                        <h2>{curr.node.title}</h2>
+                                        <h2 className="post-title"><Link style={{textDecoration: 'none'}} to={"/single/"+curr.node.slug}>{curr.node.title}</Link></h2>
                                         <span dangerouslySetInnerHTML={{ __html: curr.node.excerpt }}></span>
                                         <Link style={{textDecoration: 'none'}} to={"/single/"+curr.node.slug}>Read More...</Link>
                                     </div>
